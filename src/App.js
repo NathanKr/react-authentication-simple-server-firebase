@@ -38,7 +38,9 @@ class App extends Component {
      }).catch(err => {
         console.log(JSON.stringify(this.state.error));
         this.setState({loading:''});
-        this.setState({error:err});
+        // --- use es11 : optional chaining
+        // --- this will not throw even if response \ data \ error are null or undefined or missing
+        this.setState({error:err.response?.data?.error?.message});
        });
     };
   
